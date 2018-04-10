@@ -14,8 +14,8 @@ variable "cidr_block" {
   description = "the vpc cidr block"
 }
 
-output "vpc_id" {
-  value = "${module.vpc.vpc_id}"
+output "public_nat-bastion" {
+  value = "${module.vpc.public_nat-bastion}"
 }
 
 provider "aws" {
