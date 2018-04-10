@@ -1,0 +1,46 @@
+driver:
+  name: terraform
+
+  # The test fixture Terraform configuration is configured to be the Terraform
+  # root module
+  root_module_directory: test/fixtures/wrapper
+
+provisioner:
+  name: terraform
+
+verifier:
+  name: terraform
+  sudo: false
+
+# Platforms provide hooks for overriding the global Test Kitchen plugin
+# configuration to provide platform-specific values
+platforms:
+  -
+    name: ubuntu
+
+    driver:
+      variables:
+        cidr_block: "10.0.0.0/16"
+
+# Suites include tests and provide additional hooks for overriding the global Test
+# Kitchen plugin configuration
+suites:
+  -
+    # Kitchen-Terraform will assume that the InSpec profile for this suite is
+    # located at test/integration/extensive_suite
+    name: suite
+
+    verifier:
+      groups:
+        -
+          name: local
+
+          # The customized_inspec_attribute InSpec attribute is configured to
+          # satisfy the inspec_attributes control
+          #attributes:
+          #  customized_inspec_attribute: static_terraform_output
+
+          # A subset of the controls included in the extensive_suite InSpec
+          # profile will be executed
+          controls:
+            - inspec_attributes
