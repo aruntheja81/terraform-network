@@ -8,13 +8,13 @@ public_nat_bastion =
     description: "the bastion subnet"
   )
 
-customized_inspec_attribute =
+#customized_inspec_attribute =
   # The Test Kitchen configuration must map this attribute to the
   # 'static_terraform_output' output
-  attribute(
-    "customized_inspec_attribute",
-    description: "A configured alias for static_terraform_output"
-  )
+#  attribute(
+#    "customized_inspec_attribute",
+#    description: "A configured alias for static_terraform_output"
+#  )
 
 control "inspec_attributes" do
   desc "A demonstration of how InSpec attributes are mapped to Terraform outputs"
